@@ -5,7 +5,8 @@ const Button = () => {
   const { handleToggleIcon, isDarkTheme } = useContext(ThemeContext);
 
   return (
-    <div>
+    <div className="button-wrapper">
+      <p>Toggle From here</p>
       {isDarkTheme ? (
         <BsSun size={32} onClick={handleToggleIcon} />
       ) : (
