@@ -26,7 +26,7 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const extractDarkTheme = JSON.parse(localStorage.getItem("isDarkTheme"));
 
-    setIsDarkTheme(extractDarkTheme);
+    setIsDarkTheme(extractDarkTheme !== null ? extractDarkTheme : false);
   }, []);
 
   const handleToggleIcon = () => {
@@ -38,8 +38,10 @@ const ThemeProvider = ({ children }) => {
   const theme = isDarkTheme ? themes.dark : themes.light;
 
   return (
-    <ThemeContext.Provider value={(theme, handleToggleIcon, isDarkTheme)}>
+    <ThemeContext.Provider value={{ theme, handleToggleIcon, isDarkTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
+
+export { ThemeContext, ThemeProvider };
